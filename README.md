@@ -517,14 +517,10 @@ adb devices  # Should list your emulator/device
 Edit `app-mobile/src/config/constants.ts`:
 
 ```typescript
-// For local development with ngrok tunnel
-export const API_BASE_URL = "https://your-ngrok-url.ngrok.io/api/v1";
-
-// Or directly to local IP (if on same network)
-export const API_BASE_URL = "http://192.168.x.x:8000/api/v1";
-
-// For production
-export const API_BASE_URL = "https://api.yourproduction.com/api/v1";
+export const API_CONFIG = {
+  baseURL: "<YOUR_URL_API>",
+  assetURL: "<YOUR_URL_API>",
+};
 ```
 
 ### Step 5: Verify Setup
