@@ -4,7 +4,7 @@
  * React Query hooks for authentication operations
  */
 
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { useSetAtom } from 'jotai';
 import { useNavigation } from '@react-navigation/native';
 import { apiClient } from '../services/api';

@@ -121,11 +121,3 @@ export const FONT_SIZES = {
   xxl: 24,
   xxxl: 32,
 };
-
-// Dimensions
-const SCREEN_DIMENSIONS = {
-  cardWidth: '100%',
-  cardHeight: '100%',
-  thumbnailWidth: 60,
-  thumbnailHeight: 60,
-};

@@ -35,13 +35,6 @@ export interface Like {
   liked_at: string;
 }
 
-interface Match {
-  id: number;
-  user_id: number;
-  matched_user_id: number;
-  created_at: string;
-}
-
 // ============ Authentication ============
 
 export interface AuthCredentials {
@@ -57,15 +50,6 @@ export interface RegisterData {
   age: number;
   location: string;
   bio?: string;
-}
-
-interface AuthResponse {
-  success: boolean;
-  data: {
-    user: User;
-    token: string;
-  };
-  message?: string;
 }
 
 export interface LoginResponse {
@@ -122,11 +106,6 @@ export interface LikeResponse {
   message?: string;
 }
 
-interface DislikeResponse {
-  success: boolean;
-  message?: string;
-}
-
 export interface LikesListResponse {
   success: boolean;
   data: Like[];
@@ -149,21 +128,6 @@ export interface LikesState {
     total: number;
     last_page: number;
   };
-}
-
-// ============ Profile ============
-
-interface ProfileUpdateData {
-  name?: string;
-  age?: number;
-  location?: string;
-  bio?: string;
-}
-
-interface ProfileState {
-  user: User | null;
-  isLoading: boolean;
-  error: string | null;
 }
 
 // ============ UI State ============

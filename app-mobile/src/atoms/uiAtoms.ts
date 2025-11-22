@@ -7,17 +7,17 @@
 import { atom } from 'jotai';
 import { UIState } from '../types';
 
-const uiStateAtom = atom<UIState>({
+export const uiStateAtom = atom<UIState>({
   isLoading: false,
   error: null,
   notification: null,
 });
 
-const isLoadingAtom = atom<boolean>(false);
+export const isLoadingAtom = atom<boolean>(false);
 
-const errorAtom = atom<string | null>(null);
+export const errorAtom = atom<string | null>(null);
 
-const notificationAtom = atom<{
+export const notificationAtom = atom<{
   message: string;
   type: 'success' | 'error' | 'info' | 'warning';
 } | null>(null);

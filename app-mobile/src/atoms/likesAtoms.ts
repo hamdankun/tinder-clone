@@ -7,7 +7,7 @@
 import { atom } from 'jotai';
 import { Like, LikesState } from '../types';
 
-const likesStateAtom = atom<LikesState>({
+export const likesStateAtom = atom<LikesState>({
   liked: [],
   isLoading: false,
   error: null,
@@ -19,7 +19,7 @@ const likesStateAtom = atom<LikesState>({
   },
 });
 
-const likedPeopleAtom = atom<Like[]>([]);
+export const likedPeopleAtom = atom<Like[]>([]);
 
 export const likedUserIdsAtom = atom<Set<number>>(new Set<number>());
 

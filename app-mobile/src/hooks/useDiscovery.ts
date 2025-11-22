@@ -4,10 +4,10 @@
  * React Query hooks for people discovery operations
  */
 
-import { useQuery, useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { apiClient } from '../services/api';
 import { API_CONFIG, PAGINATION } from '../config/constants';
-import { User, PeopleListResponse } from '../types';
+import { PeopleListResponse } from '../types';
 
 /**
  * Get recommended people with infinite pagination
@@ -70,23 +70,5 @@ export const usePeopleList = () => {
     // Configuration to prevent multiple concurrent requests
     // - React Query will automatically prevent calling queryFn while isFetchingNextPage is true
     // - This is the default behavior, but we can explicitly ensure it by checking in the component
-  });
-};
-
-/**
- * Get single person details
- */
-const usePerson = (userId: number) => {
-  return useQuery({
-    queryKey: ['people', userId],
-    queryFn: async () => {
-      const response = await apiClient.get<User>(
-        API_CONFIG.endpoints.discovery.getPerson(userId),
-      );
-      return response.data;
-    },
-    staleTime: 5 * 60 * 1000, // 5 minutes
-    retry: 1,
-    enabled: !!userId,
   });
 };

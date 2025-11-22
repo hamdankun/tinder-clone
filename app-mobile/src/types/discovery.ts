@@ -19,36 +19,6 @@ export interface CardStack {
 }
 
 /**
- * Action types for card stack management
- */
-type CardStackAction =
-  | { type: 'SET_CARDS'; payload: User[] }
-  | { type: 'ADD_CARDS'; payload: User[] }
-  | { type: 'MOVE_TO_NEXT' }
-  | { type: 'RESET' };
-
-// ============ Card Interactions ============
-
-/**
- * Represents a swipe action
- */
-enum SwipeDirection {
-  LEFT = 'left',
-  RIGHT = 'right',
-  DOWN = 'down',
-  NONE = 'none',
-}
-
-/**
- * Callback types for card interactions
- */
-interface CardInteractionHandlers {
-  onLike: (userId: number) => Promise<void>;
-  onDislike: (userId: number) => Promise<void>;
-  onPass?: (userId: number) => Promise<void>;
-}
-
-/**
  * Result of a card action
  */
 export interface ActionResult {
@@ -56,51 +26,4 @@ export interface ActionResult {
   message?: string;
   error?: string;
   matched?: boolean;
-}
-
-// ============ Discovery State ============
-
-/**
- * Full discovery screen state
- */
-interface DiscoveryContextState {
-  cardStack: CardStack;
-  isLoading: boolean;
-  isFetching: boolean;
-  error: string | null;
-  hasNextPage: boolean;
-}
-
-/**
- * Loading state for different operations
- */
-interface LoadingState {
-  initial: boolean;
-  pagination: boolean;
-  action: boolean;
-}
-
-// ============ Pagination ============
-
-/**
- * Pagination metadata
- */
-interface PaginationMeta {
-  currentPage: number;
-  lastPage: number;
-  perPage: number;
-  total: number;
-}
-
-// ============ Empty State ============
-
-/**
- * Empty state configuration
- */
-interface EmptyStateConfig {
-  type: 'NO_MORE_PROFILES' | 'ERROR' | 'LOADING';
-  title: string;
-  description: string;
-  actionLabel?: string;
-  actionCallback?: () => void;
 }
