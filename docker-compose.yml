@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  laravel-api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: tinder-clone-laravel
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app
+      - /app/vendor
+      - /app/node_modules
+    environment:
+      - APP_NAME=TinderClone
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - APP_URL=http://localhost:8000
+      - DB_CONNECTION=sqlite
+      - SESSION_DRIVER=database
+      - QUEUE_CONNECTION=database
+      - CACHE_STORE=database
+    networks:
+      - tinder-network
+    command: php artisan serve --host=0.0.0.0 --port=8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+networks:
+  tinder-network:
+    driver: bridge
