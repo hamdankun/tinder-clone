@@ -288,7 +288,14 @@ rm public/storage
 php artisan storage:link
 ```
 
-### Step 5: Start the Backend Server
+### Step 5: Generate Swagger Doc
+
+```bash
+php artisan l5-swagger:generate
+```
+
+
+### Step 6: Start the Backend Server
 
 You have 3 options to run the backend server:
 
@@ -334,19 +341,39 @@ composer run dev
 
 ```bash
 # From project root directory
-docker-compose build
+# build the docker image
+docker build api -t laravel-tinder-clone
+
+# install dependencies
+docker run -it --tty -v ./api:/app -w /app laravel-tinder-clone composer install
 ```
 
-**Output:**
+**Step 2: generate app key, run migrations and seeding inside Docker**
 
-```
-Building laravel-app
-Step 1/20 : FROM php:8.2-fpm...
-...
-Successfully built [image-id]
+```bash
+# generate app key
+docker run -it --tty -v ./api:/app -w /app laravel-tinder-clone php artisan key:generate
+
+# Run migrations
+docker run -it --tty -v ./api:/app -w /app laravel-tinder-clone php artisan migrate
+
+# add necessary folder for laravel boot
+docker run -it --tty -v ./api:/app -w /app laravel-tinder-clone mkdir -p bootstrap/cache storage/app/public storage/framework/cache storage/framework/sessions storage/framework/views storage/logs
+
+# Seed database
+docker run -it --tty -v ./api:/app -w /app laravel-tinder-clone php artisan db:seed
+
+# Create storage link for file uploads (pictures, etc.)
+docker run -it --tty -v ./api:/app -w /app laravel-tinder-clone php artisan storage:link
+
+# generate swagger doc
+docker run -it --tty -v ./api:/app -w /app laravel-tinder-clone php artisan l5-swagger:generate
+
+# Check artisan commands
+docker run -it --tty -v ./api:/app -w /app laravel-tinder-clone php artisan list
 ```
 
-**Step 2: Start the containers**
+**Step 3: Start the containers**
 
 **Option 1: Start without rebuilding (faster)**
 
@@ -354,42 +381,14 @@ Successfully built [image-id]
 docker-compose up -d
 ```
 
-**Option 2: Start with rebuild (ensures everything is current)**
-
-```bash
-docker-compose up -d --build
-```
-
-**Expected Output:**
-
-```
-Creating tinder-clone_laravel-app_1 ... done
-```
-
-**Step 3: View logs**
+**Step 2: View logs**
 
 ```bash
 # View all logs
 docker-compose logs -f
 
 # View specific service logs
-docker-compose logs -f laravel-app
-```
-
-**Step 4: Run migrations and seeding inside Docker**
-
-```bash
-# Run migrations
-docker-compose exec laravel-app php artisan migrate
-
-# Seed database
-docker-compose exec laravel-app php artisan db:seed
-
-# Create storage link for file uploads (pictures, etc.)
-docker-compose exec laravel-app php artisan storage:link
-
-# Check artisan commands
-docker-compose exec laravel-app php artisan list
+docker-compose logs -f tinder-clone-laravel
 ```
 
 **Step 5: Access the API**
@@ -400,40 +399,6 @@ curl http://localhost:8000/api/v1/health
 
 # Or with ngrok tunnel
 ngrok http 8000
-```
-
-**Useful Docker Commands:**
-
-```bash
-# Stop all containers
-docker-compose down
-
-# Stop and remove all data
-docker-compose down -v
-
-# Rebuild containers after code changes
-docker-compose up -d --build
-
-# Execute artisan commands
-docker-compose exec laravel-app php artisan [command]
-
-# Access Laravel tinker (interactive shell)
-docker-compose exec laravel-app php artisan tinker
-
-# View running containers
-docker-compose ps
-
-# Clear Laravel cache
-docker-compose exec laravel-app php artisan cache:clear
-
-# Generate new app key
-docker-compose exec laravel-app php artisan key:generate
-
-# Create storage link for file uploads
-docker-compose exec laravel-app php artisan storage:link
-
-# Recache Laravel configuration
-docker-compose exec laravel-app php artisan config:cache
 ```
 
 **Docker Advantages:**
@@ -571,7 +536,7 @@ docker-compose logs -f
 
 # Or in background and check logs separately
 docker-compose up -d
-docker-compose logs -f laravel-app
+docker-compose logs -f tinder-clone-laravel
 ```
 
 **If rebuilding needed (after dependency changes):**
@@ -652,7 +617,7 @@ open http://localhost:8000/api/documentation
 docker-compose ps
 
 # Should show:
-# laravel-app      Up
+# tinder-clone-laravel      Up
 # nginx            Up
 # database (if applicable)
 
@@ -660,7 +625,7 @@ docker-compose ps
 docker-compose logs
 
 # Restart a service
-docker-compose restart laravel-app
+docker-compose restart tinder-clone-laravel
 ```
 
 ---
@@ -1364,9 +1329,9 @@ This project is open source and available under the MIT License.
 - [ ] Install Node.js ≥ 20
 - [ ] Run `docker-compose build`
 - [ ] Run `docker-compose up -d`
-- [ ] Run `docker-compose exec laravel-app php artisan migrate`
-- [ ] Run `docker-compose exec laravel-app php artisan db:seed`
-- [ ] Run `docker-compose exec laravel-app php artisan storage:link`
+- [ ] Run `docker-compose exec tinder-clone-laravel php artisan migrate`
+- [ ] Run `docker-compose exec tinder-clone-laravel php artisan db:seed`
+- [ ] Run `docker-compose exec tinder-clone-laravel php artisan storage:link`
 - [ ] Install ngrok and create tunnel
 - [ ] Run `cd app-mobile && npm install`
 - [ ] Update `API_BASE_URL` in `constants.ts`

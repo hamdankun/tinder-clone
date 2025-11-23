@@ -40,26 +40,19 @@ RUN echo "upload_max_filesize = 100M" >> /usr/local/etc/php/conf.d/laravel.ini
 RUN echo "post_max_size = 100M" >> /usr/local/etc/php/conf.d/laravel.ini
 
 # Copy composer files
-COPY composer.json composer.lock ./
+# COPY composer.json composer.lock ./
 
 # Create necessary directories
-RUN mkdir -p bootstrap/cache storage/app/public storage/framework/cache storage/framework/sessions storage/framework/views storage/logs
+# RUN mkdir -p bootstrap/cache storage/app/public storage/framework/cache storage/framework/sessions storage/framework/views storage/logs
 
-# Install Composer dependencies
-RUN composer install --no-scripts --no-autoloader
+# # Install Composer dependencies
+# RUN composer install --no-scripts --no-autoloader
 
-# Copy application files
-COPY . .
+# # Copy application files
+# COPY . .
 
-# Run composer autoload
-RUN composer dump-autoload --optimize
+# # Run composer autoload
+# RUN composer dump-autoload --optimize
 
 # Expose port for Laravel development server
 EXPOSE 8000
-
-# Set up entrypoint script
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
