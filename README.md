@@ -523,30 +523,7 @@ composer run dev
 # - Vite asset bundler
 ```
 
-**Option 2: Using Docker**
-
-**Terminal 1 - Backend API (Docker):**
-
-```bash
-# From project root
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-
-# Or in background and check logs separately
-docker-compose up -d
-docker-compose logs -f tinder-clone-laravel
-```
-
-**If rebuilding needed (after dependency changes):**
-
-```bash
-docker-compose up -d --build
-docker-compose logs -f
-```
-
-**Option 3: Using Simple PHP Server**
+**Option 2: Using Simple PHP Server**
 
 **Terminal 1 - Backend API:**
 
@@ -564,8 +541,10 @@ php artisan serve
 ```bash
 cd app-mobile
 
+yarn install
+
 # Start Metro bundler
-npm start
+yarn start
 
 # Output:
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -609,26 +588,6 @@ curl http://localhost:8000/api/v1/health
 # Access Swagger UI (if backend is running)
 open http://localhost:8000/api/documentation
 ```
-
-**For Docker Setup:**
-
-```bash
-# Check Docker containers status
-docker-compose ps
-
-# Should show:
-# tinder-clone-laravel      Up
-# nginx            Up
-# database (if applicable)
-
-# View all logs
-docker-compose logs
-
-# Restart a service
-docker-compose restart tinder-clone-laravel
-```
-
----
 
 ## ⚠️ IMPORTANT: Local Development & ngrok Tunnel
 
@@ -715,23 +674,6 @@ export const API_BASE_URL = "https://abc123def456.ngrok.io/api/v1";
 ✅ Copy forwarding URL to `API_BASE_URL`  
 ✅ Restart Metro bundler  
 ✅ Reload mobile app
-
-### 🔄 Multiple Devices
-
-If testing on multiple devices:
-
-```bash
-# All devices use the SAME ngrok URL
-# Update on each device's config, then reload
-
-# Pro Tip: Create a shared config service
-// api.ts
-export const getApiUrl = (): string => {
-  return __DEV__
-    ? 'https://your-ngrok-url.ngrok.io/api/v1'
-    : 'https://production.api.com/api/v1';
-};
-```
 
 ### 🆓 ngrok Free Tier Limitations
 
@@ -870,7 +812,7 @@ php artisan migrate:fresh --seed
 
 **Seeded Data:**
 
-- 10 test users (John, Sarah, Emily, etc.)
+- 30 test users (John, Sarah, Emily, etc.)
 - Profile pictures for each user
 - Cross-likes between users
 - Ready-to-test discovery feed
@@ -1300,45 +1242,6 @@ This project is open source and available under the MIT License.
 3. **Check API logs**: `tail -f api/storage/logs/laravel.log`
 4. **Check mobile logs**: Metro terminal or `react-native log-*`
 5. **Review Swagger UI**: `http://localhost:8000/api/documentation`
-
----
-
-## ✅ Quick Start Checklist
-
-### Option A: Using Composer Script (Recommended for simplicity)
-
-- [ ] Clone repository
-- [ ] Install Node.js ≥ 20
-- [ ] Install PHP ≥ 8.2 and Composer
-- [ ] Run `cd api && composer install`
-- [ ] Run `cd api && php artisan migrate`
-- [ ] Run `cd api && php artisan db:seed`
-- [ ] Run `cd api && php artisan storage:link`
-- [ ] Install ngrok and create tunnel
-- [ ] Run `cd api && composer run dev`
-- [ ] Run `cd app-mobile && npm install`
-- [ ] Update `API_BASE_URL` in `constants.ts`
-- [ ] Run `cd app-mobile && npm start`
-- [ ] Run `npm run ios` or `npm run android`
-- [ ] 🎉 App should load with sample data!
-
-### Option B: Using Docker (Recommended for team/production-like env)
-
-- [ ] Clone repository
-- [ ] Install Docker and Docker Compose
-- [ ] Install Node.js ≥ 20
-- [ ] Run `docker-compose build`
-- [ ] Run `docker-compose up -d`
-- [ ] Run `docker-compose exec tinder-clone-laravel php artisan migrate`
-- [ ] Run `docker-compose exec tinder-clone-laravel php artisan db:seed`
-- [ ] Run `docker-compose exec tinder-clone-laravel php artisan storage:link`
-- [ ] Install ngrok and create tunnel
-- [ ] Run `cd app-mobile && npm install`
-- [ ] Update `API_BASE_URL` in `constants.ts`
-- [ ] Run `cd app-mobile && npm start`
-- [ ] Run `npm run ios` or `npm run android`
-- [ ] 🎉 App should load with sample data!
-- [ ] Stop containers: `docker-compose down`
 
 ---
 
