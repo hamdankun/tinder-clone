@@ -11,11 +11,11 @@ const isDev = __DEV__ === true;
 export const API_CONFIG = {
   // Base URL - Update with your actual backend URL
   baseURL: isDev
-    ? 'https://b94db9b9cb07.ngrok-free.app/api'
+    ? 'https://3d0c7dddd2f2.ngrok-free.app/api'
     : 'https://api.tinder-clone.com/api',
 
   assetURL: isDev
-    ? 'https://b94db9b9cb07.ngrok-free.app'
+    ? 'https://3d0c7dddd2f2.ngrok-free.app'
     : 'https://api.tinder-clone.com',
 
   // Timeout in milliseconds

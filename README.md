@@ -395,7 +395,7 @@ docker-compose logs -f tinder-clone-laravel
 
 ```bash
 # The API will be available at
-curl http://localhost:8000/api/v1/health
+curl http://localhost:8000/api/health
 
 # Or with ngrok tunnel
 ngrok http 8000
@@ -423,7 +423,7 @@ ngrok http 8000
 
 ```bash
 # Test the health endpoint
-curl http://localhost:8000/api/v1/health
+curl http://localhost:8000/api/health
 
 # Expected response:
 {"status": "healthy", "message": "API is running"}
@@ -442,7 +442,7 @@ open http://localhost:8000/api/documentation
 cd app-mobile
 
 # Install npm packages
-npm install
+yarn install
 
 # Or using yarn
 yarn install
@@ -492,10 +492,7 @@ export const API_CONFIG = {
 
 ```bash
 # Lint code for issues
-npm run lint
-
-# Run TypeScript type check
-npx tsc --noEmit
+yarn lint
 
 # Expected: No errors or warnings
 ```
@@ -559,7 +556,7 @@ iOS (macOS only):
 
 ```bash
 cd app-mobile
-npm run ios
+yarn ios
 
 # Or with specific simulator
 npx react-native run-ios --simulator="iPhone 15 Pro"
@@ -569,7 +566,7 @@ Android:
 
 ```bash
 cd app-mobile
-npm run android
+yarn android
 
 # Requires Android emulator to be running first
 ```
@@ -580,7 +577,7 @@ npm run android
 
 ```bash
 # Health check endpoint
-curl http://localhost:8000/api/v1/health
+curl http://localhost:8000/api/health
 
 # Expected response:
 {"status": "healthy", "message": "API is running"}
@@ -1038,14 +1035,14 @@ php artisan migrate
 
 ```bash
 # Clear Metro cache
-npm start -- --reset-cache
+yarn start -- --reset-cache
 
 # Kill any lingering processes
 lsof -i :8081
 kill -9 <PID>
 
 # Try again
-npm start
+yarn start
 ```
 
 #### Module Not Found
@@ -1053,10 +1050,10 @@ npm start
 ```bash
 # Clear node_modules and reinstall
 rm -rf node_modules package-lock.json
-npm install
+yarn install
 
 # Clear build cache
-npm start -- --reset-cache
+yarn start -- --reset-cache
 ```
 
 #### Emulator Connection Issues
@@ -1069,16 +1066,16 @@ adb devices
 xcrun simctl list devices
 
 # Rebuild and try again
-npm run android
+yarn android
 # or
-npm run ios
+yarn ios
 ```
 
 #### API Connection Errors (404, Connection Refused)
 
 ```bash
 # Check backend is running
-curl http://localhost:8000/api/v1/health
+curl http://localhost:8000/api/health
 
 # Verify ngrok tunnel is active
 ngrok http 8000
@@ -1087,7 +1084,7 @@ ngrok http 8000
 export const API_BASE_URL = 'https://your-ngrok-url.ngrok.io/api/v1';
 
 # Restart Metro
-npm start
+yarn start
 ```
 
 ### Network Issues
@@ -1162,7 +1159,7 @@ php artisan test
 
 ```bash
 cd app-mobile
-npm test
+yarn test
 ```
 
 ### Debugging
@@ -1190,7 +1187,7 @@ npx react-native log-ios
 npx react-native log-android
 
 # Use React DevTools
-npm install -g react-devtools
+yarn install -g react-devtools
 react-devtools
 
 # Debug with Chrome DevTools (web version)
