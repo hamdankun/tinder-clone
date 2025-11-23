@@ -34,7 +34,6 @@ yarn.lock
 # PHP / COMPOSER (Backend API)
 # ============================================================================
 vendor/
-composer.lock
 composer.phar
 .php_cs.cache
 .php-cs-fixer.cache
