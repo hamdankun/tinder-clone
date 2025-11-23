@@ -6,20 +6,20 @@ A modern **dual-platform Tinder clone** built with **Laravel 12 backend** and **
 
 ## 📋 Table of Contents
 
-1. [Project Overview](#project-overview)
-2. [Architecture](#architecture)
-3. [Tech Stack](#tech-stack)
-4. [Prerequisites](#prerequisites)
-5. [Backend Setup](#backend-setup)
-6. [Mobile App Setup](#mobile-app-setup)
-7. [Running the Application](#running-the-application)
-8. [Important: Local Development & ngrok Tunnel](#important-local-development--ngrok-tunnel)
-9. [API Documentation](#api-documentation)
-10. [Database & Seeding](#database--seeding)
-11. [Cronjob Configuration](#cronjob-configuration)
-12. [Project Structure](#project-structure)
-13. [Troubleshooting](#troubleshooting)
-14. [Development Workflows](#development-workflows)
+1. [Project Overview](#-project-overview)
+2. [Architecture](#️-architecture)
+3. [Tech Stack](#-tech-stack)
+4. [Prerequisites](#-prerequisites)
+5. [Backend Setup](#-backend-setup)
+6. [Mobile App Setup](#-mobile-app-setup)
+7. [Running the Application](#-running-the-application)
+8. [Important: Local Development & ngrok Tunnel](#️-important-local-development--ngrok-tunnel)
+9. [API Documentation](#-api-documentation)
+10. [Database & Seeding](#️-database--seeding)
+11. [Cronjob Configuration](#-cronjob-configuration)
+12. [Project Structure](#-project-structure)
+13. [Troubleshooting](#-troubleshooting)
+14. [Development Workflows](#-development-workflows)
 
 ---
 
@@ -256,7 +256,7 @@ php artisan db:seed --class=UserSeeder
 
 **Seeded Data Includes:**
 
-- 10 test users with full profiles
+- 30 test users with full profiles
 - Profile pictures for each user
 - Sample likes between users
 - Ready-to-test discovery feed
