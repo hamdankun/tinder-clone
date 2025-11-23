@@ -81,7 +81,6 @@ app-mobile/.metro-health-check-result
 # ============================================================================
 # REACT NATIVE - ANDROID BUILD
 # ============================================================================
-app-mobile/android/gradle.properties
 app-mobile/android/local.properties
 app-mobile/android/.gradle/
 app-mobile/android/build/
