@@ -1,0 +1,14 @@
+.git
+.gitignore
+*.md
+.env
+.env.example
+.editorconfig
+.DS_Store
+node_modules
+vendor
+storage
+bootstrap/cache
+*.log
+__pycache__
+.pytest_cache
