@@ -60,79 +60,6 @@ api/database/database.sqlite
 api/database/database.sqlite-journal
 
 # ============================================================================
-# REACT NATIVE / MOBILE APP
-# ============================================================================
-app-mobile/node_modules/
-app-mobile/.expo/
-app-mobile/.expo-shared/
-app-mobile/dist/
-app-mobile/npm-debug.*
-app-mobile/.DS_Store
-app-mobile/*.jks
-app-mobile/*.p8
-app-mobile/*.p12
-app-mobile/*.key
-app-mobile/*.mobileprovision
-app-mobile/*.orig.*
-app-mobile/web-build/
-app-mobile/Metro/
-app-mobile/.metro-health-check-result
-
-# ============================================================================
-# REACT NATIVE - ANDROID BUILD
-# ============================================================================
-app-mobile/android/local.properties
-app-mobile/android/.gradle/
-app-mobile/android/build/
-app-mobile/android/.idea/
-app-mobile/android/*.iml
-app-mobile/android/*.apk
-app-mobile/android/*.aab
-app-mobile/android/app/src/main/assets/index.android.bundle
-
-# ============================================================================
-# REACT NATIVE - IOS BUILD
-# ============================================================================
-app-mobile/ios/Pods/
-app-mobile/ios/Podfile.lock
-app-mobile/ios/.xcode.env.local
-app-mobile/ios/build/
-app-mobile/ios/xcuserdata/
-app-mobile/ios/*.xcworkspace/xcuserdata/
-app-mobile/ios/*.pbxuser
-app-mobile/ios/*.perspectivev3
-app-mobile/ios/*.mode1v3
-app-mobile/ios/*.mode2v3
-app-mobile/ios/*xcworkspace/xcuserdata/
-app-mobile/ios/.DS_Store
-app-mobile/ios/**/*.hmap
-app-mobile/ios/**/*.ipa
-app-mobile/ios/**/*.xcarchive
-
-# ============================================================================
-# OS & IDE FILES
-# ============================================================================
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-*.swp
-*~
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-*.lnk
-
-# ============================================================================
 # IDE & EDITOR
 # ============================================================================
 # VS Code
@@ -388,3 +315,106 @@ ngrok.yml
 *.md.bak
 *.backup
 *.swapfile
+
+
+# OSX
+#
+.DS_Store
+
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+**/.xcode.env.local
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+.cxx/
+*.keystore
+!debug.keystore
+.kotlin/
+
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+
+# Bundle artifact
+*.jsbundle
+
+# Ruby / CocoaPods
+**/Pods/
+/vendor/bundle/
+
+# Temporary files created by Metro to check the health of the file watcher
+.metro-health-check*
+
+# testing
+/coverage
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+
+*.log
+.DS_Store
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/auth.json
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+Homestead.json
+Homestead.yaml
+Thumbs.db
